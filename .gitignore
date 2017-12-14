@@ -1,0 +1,45 @@
+# OS X
+.DS_Store
+
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+profile
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+
+Example/build/
+Example/*.pbxuser
+Example/!default.pbxuser
+Example/*.mode1v3
+Example/!default.mode1v3
+Example/*.mode2v3
+Example/!default.mode2v3
+Example/*.perspectivev3
+Example/!default.perspectivev3
+Example/xcuserdata/
+Example/*.xccheckout
+Example/profile
+Example/*.moved-aside
+Example/DerivedData
+Example/*.hmap
+Example/*.ipa
+
+# Bundler
+.bundle
+
+Carthage
+Example/Pods
+
+.ruby-version

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ARKitEnvironmentMapper_Example' do
+  pod 'ARKitEnvironmentMapper', :path => '../'
+
+  target 'ARKitEnvironmentMapper_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
