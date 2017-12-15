@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ARKitEnvironmentMapper: 0e201d717ae2a0060fa0fb26d6e147dba6641525
+  ARKitEnvironmentMapper: bf603d30f98830da4b6919c4df60d1ba891cc1a8
 
 PODFILE CHECKSUM: bdf56360b4ed0dd07cbfef38db6d35f616b7e68b
 
