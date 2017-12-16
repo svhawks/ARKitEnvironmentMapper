@@ -23,12 +23,23 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-Tn-K2X">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hln-Iv-TwS">
+                                <rect key="frame" x="142" y="588" width="91" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Apply Map"/>
+                                <connections>
+                                    <action selector="applyMap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FpD-Zv-s6C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hln-Iv-TwS" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Ira-Aa-o8k"/>
                             <constraint firstItem="6Ha-Tn-K2X" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Nbk-us-YAp"/>
                             <constraint firstAttribute="trailing" secondItem="6Ha-Tn-K2X" secondAttribute="trailing" id="PwF-fy-A6X"/>
                             <constraint firstItem="6Ha-Tn-K2X" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TsP-un-0DM"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hln-Iv-TwS" secondAttribute="bottom" constant="44" id="XuV-Tl-FcS"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6Ha-Tn-K2X" secondAttribute="bottom" id="k3Q-fu-sX5"/>
                         </constraints>
                     </view>

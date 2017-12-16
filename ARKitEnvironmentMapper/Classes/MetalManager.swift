@@ -63,12 +63,12 @@ class MetalManager {
   func newWritableTexture(withHeight height: Int, withColor color: UIColor) -> MTLTexture? {
     let width = height * 2
     let cgContext = CGContext(data: nil,
-                            width: width,
-                            height: height,
-                            bitsPerComponent: RGBA32.bitsPerComponent,
-                            bytesPerRow: RGBA32.bytesPerRow(width: width),
-                            space: CGColorSpaceCreateDeviceRGB(),
-                            bitmapInfo: RGBA32.bitmapInfo)
+                              width: width,
+                              height: height,
+                              bitsPerComponent: RGBA32.bitsPerComponent,
+                              bytesPerRow: RGBA32.bytesPerRow(width: width),
+                              space: CGColorSpaceCreateDeviceRGB(),
+                              bitmapInfo: RGBA32.bitmapInfo)
     guard let context = cgContext else {
       fatalError("Could not create texture")
     }
@@ -118,4 +118,29 @@ class MetalManager {
                                                                 height: CVPixelBufferGetHeight(pixelBuffer)))
     return cgImage
   }
+
+  // TODO: Fix this method
+  func image(fromTexture texture: MTLTexture) -> CGImage? {
+    guard texture.pixelFormat == .bgra8Unorm_srgb else {
+      return nil
+    }
+
+    let imageByteCount = texture.width * texture.height * 4
+    let bytesPerRow = texture.width * 4
+    let imageBytes = UnsafeMutableRawPointer.allocate(bytes: imageByteCount, alignedTo: 4)
+    let region = MTLRegionMake2D(0, 0, texture.width, texture.height)
+    texture.getBytes(imageBytes, bytesPerRow: bytesPerRow, from: region, mipmapLevel: 0)
+
+    let context = CGContext(data: imageBytes,
+                            width: texture.width,
+                            height: texture.height,
+                            bitsPerComponent: RGBA32.bitsPerComponent,
+                            bytesPerRow: RGBA32.bytesPerRow(width: texture.width),
+                            space: CGColorSpaceCreateDeviceRGB(),
+                            bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue)
+    let image = context?.makeImage()
+    imageBytes.deallocate(bytes: imageByteCount, alignedTo: 4)
+    return image
+  }
+
 }

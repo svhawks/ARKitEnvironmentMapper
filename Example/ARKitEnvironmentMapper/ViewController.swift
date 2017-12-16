@@ -113,10 +113,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
   func session(_ session: ARSession, didUpdate frame: ARFrame) {
     if let environmentMapper = environmentMapper {
-      environmentMapper.updateMap(withFrame: frame) { texture in
-        self.sceneView.scene.lightingEnvironment.contents = texture
-      }
+      environmentMapper.updateMap(withFrame: frame)
     }
   }
+
+  @IBAction func applyMap(_ sender: Any) {
+    sceneView.scene.lightingEnvironment.contents = environmentMapper?.currentEnvironmentMap()
+  }
+
 }
 
