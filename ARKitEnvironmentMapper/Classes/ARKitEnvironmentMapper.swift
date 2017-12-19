@@ -5,8 +5,6 @@ import ARKit
 
 public class ARKitEnvironmentMapper {
 
-  private let mappingQueue = DispatchQueue(label: "com.svtek.ARKitEnvironmentMapper.mappingQueue")
-
   private let width: Int
   private let height: Int
 
@@ -113,40 +111,38 @@ public class ARKitEnvironmentMapper {
   }
 
   public func updateMap(withFrame frame: ARFrame) {
-    mappingQueue.async {
-      let cameraTransform = SCNMatrix4(frame.camera.transform)
-      let cameraForward = SCNVector3(cameraTransform.m31, cameraTransform.m32, cameraTransform.m33) * -1
-      let cameraUp = SCNVector3(cameraTransform.m21, cameraTransform.m22, cameraTransform.m23)
-      let cameraLeft = SCNVector3(cameraTransform.m11, cameraTransform.m12, cameraTransform.m13) * -1
+    let cameraTransform = SCNMatrix4(frame.camera.transform)
+    let cameraForward = SCNVector3(cameraTransform.m31, cameraTransform.m32, cameraTransform.m33) * -1
+    let cameraUp = SCNVector3(cameraTransform.m21, cameraTransform.m22, cameraTransform.m23)
+    let cameraLeft = SCNVector3(cameraTransform.m11, cameraTransform.m12, cameraTransform.m13) * -1
 
-      if self.xFov == nil {
-        let imageResolution = frame.camera.imageResolution
-        let intrinsics = frame.camera.intrinsics
-        self.xFov = 2 * atan(Float(imageResolution.width) / (2 * intrinsics[0, 0]))
-        self.yFov = 2 * atan(Float(imageResolution.height) / (2 * intrinsics[1, 1]))
-      }
-
-      let halfXFov = self.xFov / 2
-      let halfYFov = self.yFov / 2
-      // 0: bottom left, 1: bottom right, 2: top right, 3: top left
-      let rotations = [(halfXFov, halfYFov), (-halfXFov, halfYFov), (-halfXFov, -halfYFov), (halfXFov, -halfYFov)]
-      let frustum = rotations.map { (rotX, rotY) -> SCNVector3 in
-        let rotatedLeft = cameraLeft.rotate(around: cameraUp, by: rotX)
-        let rotatedForward = cameraForward.rotate(around: cameraUp, by: rotX)
-        return rotatedForward.rotate(around: rotatedLeft, by: rotY)
-      }
-
-      guard let currentFrameTexture = self.metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
-        return
-      }
-
-      self.currentFrameInfo = FrameInfo(frustum, cameraForward, UInt(currentFrameTexture.width), UInt(currentFrameTexture.height))
-
-      self.metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
-                                            convertingCoordinatesWith: self.coordinateConversionTexture,
-                                            environmentMap: self.environmentMapTexture,
-                                            info: &(self.currentFrameInfo))
+    if self.xFov == nil {
+      let imageResolution = frame.camera.imageResolution
+      let intrinsics = frame.camera.intrinsics
+      self.xFov = 2 * atan(Float(imageResolution.width) / (2 * intrinsics[0, 0]))
+      self.yFov = 2 * atan(Float(imageResolution.height) / (2 * intrinsics[1, 1]))
     }
+
+    let halfXFov = self.xFov / 2
+    let halfYFov = self.yFov / 2
+    // 0: bottom left, 1: bottom right, 2: top right, 3: top left
+    let rotations = [(halfXFov, halfYFov), (-halfXFov, halfYFov), (-halfXFov, -halfYFov), (halfXFov, -halfYFov)]
+    let frustum = rotations.map { (rotX, rotY) -> SCNVector3 in
+      let rotatedLeft = cameraLeft.rotate(around: cameraUp, by: rotX)
+      let rotatedForward = cameraForward.rotate(around: cameraUp, by: rotX)
+      return rotatedForward.rotate(around: rotatedLeft, by: rotY)
+    }
+
+    guard let currentFrameTexture = self.metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
+      return
+    }
+
+    self.currentFrameInfo = FrameInfo(frustum, cameraForward, UInt(currentFrameTexture.width), UInt(currentFrameTexture.height))
+
+    self.metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
+                                          convertingCoordinatesWith: self.coordinateConversionTexture,
+                                          environmentMap: self.environmentMapTexture,
+                                          info: &(self.currentFrameInfo))
   }
 
   public func currentEnvironmentMap(as format: EnvironmentMapType = .mtlTexture) -> Any? {
