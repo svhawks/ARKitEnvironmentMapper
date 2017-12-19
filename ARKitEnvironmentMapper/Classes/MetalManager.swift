@@ -2,7 +2,6 @@ import CoreGraphics
 import QuartzCore
 import MetalKit
 import ARKit
-import Photos
 
 class MetalManager {
   private let device: MTLDevice
@@ -56,7 +55,7 @@ class MetalManager {
 
   func newWritableTexture(fromCGImage cgImage: CGImage) -> MTLTexture? {
     return try? textureLoader.newTexture(cgImage: cgImage,
-                                         options: [MTKTextureLoader.Option.textureUsage: MTLTextureUsage.shaderWrite.rawValue,
+                                         options: [MTKTextureLoader.Option.textureUsage: MTLTextureUsage.shaderWrite.rawValue | MTLTextureUsage.shaderRead.rawValue,
                                                    MTKTextureLoader.Option.textureStorageMode: MTLStorageMode.shared.rawValue])
   }
 
@@ -119,28 +118,16 @@ class MetalManager {
     return cgImage
   }
 
-  // TODO: Fix this method
   func image(fromTexture texture: MTLTexture) -> CGImage? {
     guard texture.pixelFormat == .bgra8Unorm_srgb else {
       return nil
     }
 
-    let imageByteCount = texture.width * texture.height * 4
-    let bytesPerRow = texture.width * 4
-    let imageBytes = UnsafeMutableRawPointer.allocate(bytes: imageByteCount, alignedTo: 4)
-    let region = MTLRegionMake2D(0, 0, texture.width, texture.height)
-    texture.getBytes(imageBytes, bytesPerRow: bytesPerRow, from: region, mipmapLevel: 0)
-
-    let context = CGContext(data: imageBytes,
-                            width: texture.width,
-                            height: texture.height,
-                            bitsPerComponent: RGBA32.bitsPerComponent,
-                            bytesPerRow: RGBA32.bytesPerRow(width: texture.width),
-                            space: CGColorSpaceCreateDeviceRGB(),
-                            bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue)
-    let image = context?.makeImage()
-    imageBytes.deallocate(bytes: imageByteCount, alignedTo: 4)
-    return image
+    guard let ciImage = CIImage(mtlTexture: texture, options: nil) else {
+        return nil
+    }
+    let correctedImage = ciImage.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
+    return ciContext.createCGImage(correctedImage, from: correctedImage.extent)
   }
 
 }

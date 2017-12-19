@@ -118,7 +118,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
   }
 
   @IBAction func applyMap(_ sender: Any) {
-    sceneView.scene.lightingEnvironment.contents = environmentMapper?.currentEnvironmentMap()
+    sceneView.scene.lightingEnvironment.contents = environmentMapper?.currentEnvironmentMap(as: .cgImage)
   }
 
 }
