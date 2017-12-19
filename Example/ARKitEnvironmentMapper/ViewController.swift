@@ -16,14 +16,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
   @IBOutlet var sceneView: ARSCNView!
 
-  var envMap: UIImage?
-
   var environmentMapper: ARKitEnvironmentMapper?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-//    envMap = UIImage(named: "room")
 
     // Set the view's delegate
     sceneView.delegate = self
@@ -64,14 +60,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     // Run the view's session
     sceneView.session.run(configuration)
   }
-  //
-  //  override func viewDidAppear(_ animated: Bool) {
-  //    let ship = sceneView.scene.rootNode.childNodes.first
-  //    let replicatorConstraint = SCNReplicatorConstraint(target: sceneView.scene.rootNode.childNodes[1])
-  //    replicatorConstraint.replicatesScale = false
-  //    replicatorConstraint.replicatesPosition = false
-  //    ship?.constraints = [replicatorConstraint]
-  //  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+      self.environmentMapper?.startMapping()
+    }
+  }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
