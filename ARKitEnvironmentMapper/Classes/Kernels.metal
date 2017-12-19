@@ -25,7 +25,8 @@ kernel void updateEnvironmentMap(texture2d<float, access::read> currentFrameText
                                  uint2 gid [[thread_position_in_grid]])
 {
   const float3 r0 = {0.0f, 0.0f, 0.0f};
-  const float3 rd = (coordinateConversionTexture.read(gid).yzx * 2.0f) - 1.0f;
+  // get .zyx because of the BGRA -> RGBA conversion from MTLTexture to texture2d
+  const float3 rd = (coordinateConversionTexture.read(gid).zyx * 2.0f) - 1.0f;
   const float3 n = frame.forward.xyz;
   const float D = -1 * (dot(n, frame.p3.xyz));
 

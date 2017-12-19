@@ -107,12 +107,13 @@ public class ARKitEnvironmentMapper {
     let heightFloat = Float(height)
     let widthFloat = Float(width)
     for i in 0 ..< height {
-      let theta = Float.pi * (1 - Float(i + 1) / heightFloat)
+      let theta = Float.pi * Float(i + 1) / heightFloat
       for j in 0 ..< width {
         let phi = 2 * Float.pi * Float(j + 1) / widthFloat
+        // flip the components because of the Cartesian coordinate conventions
         let x = UInt8(((sin(theta) * cos(phi) + 1.0) / 2.0) * 255)
-        let y = UInt8(((sin(theta) * sin(phi) + 1.0) / 2.0) * 255)
-        let z = UInt8(((cos(theta) + 1) / 2.0) * 255)
+        let z = UInt8(((sin(theta) * sin(phi) + 1.0) / 2.0) * 255)
+        let y = UInt8(((cos(theta) + 1) / 2.0) * 255)
         let offset = width * i + j
         pixelBuffer[offset] = RGBA32(red: x, green: y, blue: z, alpha: 255)
       }
