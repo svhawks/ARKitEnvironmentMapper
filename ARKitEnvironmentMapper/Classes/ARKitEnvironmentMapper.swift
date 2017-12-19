@@ -18,6 +18,11 @@ public class ARKitEnvironmentMapper {
   private var coordinateConversionTexture: MTLTexture!
   private var environmentMapTexture: MTLTexture!
 
+  private let updatesPerSecond = 10
+  private var lastUpdateTime: CFTimeInterval = 0
+
+  private(set) public var isMapping: Bool
+
   public init?(withImageName imageName: String) {
     let im = UIImage(named: imageName, in: Bundle.main, compatibleWith: nil)
     guard let image = im else {
@@ -39,6 +44,8 @@ public class ARKitEnvironmentMapper {
 
     metalManager = mtlManager
 
+    isMapping = false
+
     setupEnvironmentMapTexture(withDefaultEnvironmentMapImage: image.cgImage)
     setupCoordinateConversionTexture()
   }
@@ -53,6 +60,8 @@ public class ARKitEnvironmentMapper {
 
     metalManager = mtlManager
 
+    isMapping = false
+
     setupEnvironmentMapTexture(withDefaultEnvironmentMapImage: nil, orWithDefaultTextureColor: color)
     setupCoordinateConversionTexture()
   }
@@ -66,6 +75,11 @@ public class ARKitEnvironmentMapper {
     } else {
       fatalError("Wrong parameters provided to initializer.")
     }
+  }
+
+  private func shouldUpdate() -> Bool {
+    let currentTime = CACurrentMediaTime()
+    return isMapping && currentTime - lastUpdateTime > (1.0 / Double(updatesPerSecond))
   }
 
   private func setupCoordinateConversionTexture() {
@@ -111,20 +125,25 @@ public class ARKitEnvironmentMapper {
   }
 
   public func updateMap(withFrame frame: ARFrame) {
+    guard shouldUpdate() else {
+      return
+    }
+    lastUpdateTime = CACurrentMediaTime()
+
     let cameraTransform = SCNMatrix4(frame.camera.transform)
     let cameraForward = SCNVector3(cameraTransform.m31, cameraTransform.m32, cameraTransform.m33) * -1
     let cameraUp = SCNVector3(cameraTransform.m21, cameraTransform.m22, cameraTransform.m23)
     let cameraLeft = SCNVector3(cameraTransform.m11, cameraTransform.m12, cameraTransform.m13) * -1
 
-    if self.xFov == nil {
+    if xFov == nil {
       let imageResolution = frame.camera.imageResolution
       let intrinsics = frame.camera.intrinsics
-      self.xFov = 2 * atan(Float(imageResolution.width) / (2 * intrinsics[0, 0]))
-      self.yFov = 2 * atan(Float(imageResolution.height) / (2 * intrinsics[1, 1]))
+      xFov = 2 * atan(Float(imageResolution.width) / (2 * intrinsics[0, 0]))
+      yFov = 2 * atan(Float(imageResolution.height) / (2 * intrinsics[1, 1]))
     }
 
-    let halfXFov = self.xFov / 2
-    let halfYFov = self.yFov / 2
+    let halfXFov = xFov / 2
+    let halfYFov = yFov / 2
     // 0: bottom left, 1: bottom right, 2: top right, 3: top left
     let rotations = [(halfXFov, halfYFov), (-halfXFov, halfYFov), (-halfXFov, -halfYFov), (halfXFov, -halfYFov)]
     let frustum = rotations.map { (rotX, rotY) -> SCNVector3 in
@@ -133,16 +152,16 @@ public class ARKitEnvironmentMapper {
       return rotatedForward.rotate(around: rotatedLeft, by: rotY)
     }
 
-    guard let currentFrameTexture = self.metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
+    guard let currentFrameTexture = metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
       return
     }
 
     currentFrameInfo = FrameInfo(frustum, cameraForward, Float(currentFrameTexture.width), Float(currentFrameTexture.height))
 
-    self.metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
-                                          convertingCoordinatesWith: self.coordinateConversionTexture,
-                                          environmentMap: self.environmentMapTexture,
-                                          info: &(self.currentFrameInfo))
+    metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
+                                          convertingCoordinatesWith: coordinateConversionTexture,
+                                          environmentMap: environmentMapTexture,
+                                          info: &currentFrameInfo)
   }
 
   public func currentEnvironmentMap(as format: EnvironmentMapType = .mtlTexture) -> Any? {
@@ -158,6 +177,21 @@ public class ARKitEnvironmentMapper {
         return nil
       }
     }
+  }
+
+  public func startMapping() {
+    isMapping = true
+  }
+
+  public func stopMapping() {
+    isMapping = false
+  }
+
+  public func reset(withDefaultEnvironmentMapImage cgImage: CGImage? = nil,
+                    orWithDefaultTextureColor color: UIColor? = nil) {
+    lastUpdateTime = CACurrentMediaTime()
+    setupEnvironmentMapTexture(withDefaultEnvironmentMapImage: cgImage,
+                               orWithDefaultTextureColor: color)
   }
 }
 
