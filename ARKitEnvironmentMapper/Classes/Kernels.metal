@@ -11,8 +11,8 @@ struct FrameInfo {
 
   float envMapWidth;
   float envMapHeight;
-  uint frameWidth;
-  uint frameHeight;
+  float frameWidth;
+  float frameHeight;
 };
 
 // This kernel method shoots a ray towards the directions inside `coordinateConversionTexture`.

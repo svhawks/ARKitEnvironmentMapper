@@ -137,7 +137,7 @@ public class ARKitEnvironmentMapper {
       return
     }
 
-    self.currentFrameInfo = FrameInfo(frustum, cameraForward, UInt(currentFrameTexture.width), UInt(currentFrameTexture.height))
+    currentFrameInfo = FrameInfo(frustum, cameraForward, Float(currentFrameTexture.width), Float(currentFrameTexture.height))
 
     self.metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
                                           convertingCoordinatesWith: self.coordinateConversionTexture,

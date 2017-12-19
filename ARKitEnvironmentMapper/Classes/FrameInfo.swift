@@ -10,10 +10,10 @@ struct FrameInfo {
 
   var frameWidth: Float
   var frameHeight: Float
-  var envMapWidth: UInt
-  var envMapHeight: UInt
+  var envMapWidth: Float
+  var envMapHeight: Float
 
-  init(_ frustum: [SCNVector3], _ forward: SCNVector3, _ width: UInt, _ height: UInt) {
+  init(_ frustum: [SCNVector3], _ forward: SCNVector3, _ width: Float, _ height: Float) {
     p0 = SCNVector4(frustum[0], 1.0)
     p1 = SCNVector4(frustum[1], 1.0)
     p2 = SCNVector4(frustum[2], 1.0)
