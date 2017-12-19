@@ -1,27 +1,20 @@
 Pod::Spec.new do |s|
   s.name             = 'ARKitEnvironmentMapper'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ARKitEnvironmentMapper.'
+  s.summary          = 'Real-time environment map generator for ARKit'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+ A library that allows you to generate and update environment maps in real-time using the camera feed and ARKit's tracking capabilities.
                        DESC
 
-  s.homepage         = 'https://github.com/halileohalilei/ARKitEnvironmentMapper'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/svtek/ARKitEnvironmentMapper'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'halileohalilei' => 'halil@mojilala.com' }
-  s.source           = { :git => 'https://github.com/halileohalilei/ARKitEnvironmentMapper.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/svtek/ARKitEnvironmentMapper.git', :tag => s.version }
+  s.social_media_url = 'https://twitter.com/halileohalilei'
 
   s.ios.deployment_target = '11.0'
 
   s.source_files = 'ARKitEnvironmentMapper/Classes/**/*'
 
-  # s.resource_bundles = {
-  #   'ARKitEnvironmentMapper' => ['ARKitEnvironmentMapper/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'Metal', 'MetalKit', 'ARKit', 'SceneKit', 'CoreGraphics', 'QuartzCore'
 end
