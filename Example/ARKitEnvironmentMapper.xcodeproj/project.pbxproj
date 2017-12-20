@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07FAE5AB9261B6EFF2D1B9F1 /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438F5A02289C0D2C732C26DE /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Example.framework */; };
 		49F2EFEE006FDE90B727A963 /* Pods_ARKitEnvironmentMapper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A46BFA4A6BD74C886214287 /* Pods_ARKitEnvironmentMapper_Tests.framework */; };
 		516891E66CC72F26EFB0076B /* Pods_ARKitEnvironmentMapper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 194700FD394165CF4909E686 /* Pods_ARKitEnvironmentMapper_Example.framework */; };
-		57F12F73008508D923FF6E39 /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBFFC00573D5C5706B57FCA /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -58,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				516891E66CC72F26EFB0076B /* Pods_ARKitEnvironmentMapper_Example.framework in Frameworks */,
-				07FAE5AB9261B6EFF2D1B9F1 /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +64,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F2EFEE006FDE90B727A963 /* Pods_ARKitEnvironmentMapper_Tests.framework in Frameworks */,
-				57F12F73008508D923FF6E39 /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
