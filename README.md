@@ -22,13 +22,13 @@ pod 'ARKitEnvironmentMapper'
 
 To initialize with a base environment map with an image asset named "room", add use the following code:
 
-```
+```swift
 let environmentMapper = ARKitEnvironmentMapper(withImageName: "room")
 ```
 
 Alternatively, you can initialize it with a height and a color:
 
-```
+```swift
 let environmentMapper = ARKitEnvironmentMapper(withMapHeight: 512, withDefaultColor: .red)
 ```
 
@@ -38,7 +38,7 @@ To stop the mapping process, simply call `stopMapping()`.
 
 To update the environment map with the current feed of the camera, you can use the following code in your class implementing `ARSessionDelegate`:
 
-```
+```swift
 func session(_ session: ARSession, didUpdate frame: ARFrame) {
   environmentMapper.updateMap(withFrame: frame)
 }
@@ -48,7 +48,7 @@ You can call `updateMap(withFrame:)` in `didUpdate` regardless of the preferred 
 
 After mapping the environment for a while you can get the current generated environment map and set it as the environment map of your `ARSCNView` with the following code:
 
-```
+```swift
 sceneView.scene.lightingEnvironment.contents = environmentMapper.currentEnvironmentMap(as: .cgImage)
 ```
 
