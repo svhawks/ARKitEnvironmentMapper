@@ -1,6 +1,6 @@
 # ARKitEnvironmentMapper
 
-[![CI Status](http://img.shields.io/travis/halileohalilei/ARKitEnvironmentMapper.svg?style=flat)](https://travis-ci.org/halileohalilei/ARKitEnvironmentMapper)
+[![CI Status](http://img.shields.io/travis/svtek/ARKitEnvironmentMapper.svg?style=flat)](https://travis-ci.org/svtek/ARKitEnvironmentMapper)
 [![Version](https://img.shields.io/cocoapods/v/ARKitEnvironmentMapper.svg?style=flat)](http://cocoapods.org/pods/ARKitEnvironmentMapper)
 [![License](https://img.shields.io/cocoapods/l/ARKitEnvironmentMapper.svg?style=flat)](http://cocoapods.org/pods/ARKitEnvironmentMapper)
 [![Platform](https://img.shields.io/cocoapods/p/ARKitEnvironmentMapper.svg?style=flat)](http://cocoapods.org/pods/ARKitEnvironmentMapper)
