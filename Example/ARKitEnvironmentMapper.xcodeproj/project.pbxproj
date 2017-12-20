@@ -31,12 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0911C309EDF8F055D6D4127A /* Pods-ARKitEnvironmentMapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0FBFFC00573D5C5706B57FCA /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194700FD394165CF4909E686 /* Pods_ARKitEnvironmentMapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitEnvironmentMapper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A46BFA4A6BD74C886214287 /* Pods_ARKitEnvironmentMapper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitEnvironmentMapper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BB7896EF3325B2F78B0C153 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		32D4C353F21130F0BA6C16D0 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.release.xcconfig"; sourceTree = "<group>"; };
+		36F32A262A731A741A113E48 /* Pods-ARKitEnvironmentMapper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		438F5A02289C0D2C732C26DE /* Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitEnvironmentMapper_ARKitEnvironmentMapper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		596497773911C2E0ED9C8E65 /* Pods-ARKitEnvironmentMapper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ARKitEnvironmentMapper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitEnvironmentMapper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,9 +48,8 @@
 		607FACE51AFB9204008FA782 /* ARKitEnvironmentMapper_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARKitEnvironmentMapper_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		A7A918F1621124457C9E5FE8 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6ED697641F0623505383B1E1 /* Pods-ARKitEnvironmentMapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C25B1A501FE32FDF00DBBCF9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		FED7126537BF456C5AA88E25 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +77,10 @@
 		0C02F1D091DA3B39EA8AB52F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FED7126537BF456C5AA88E25 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.debug.xcconfig */,
-				32D4C353F21130F0BA6C16D0 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.release.xcconfig */,
-				2BB7896EF3325B2F78B0C153 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.debug.xcconfig */,
-				A7A918F1621124457C9E5FE8 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.release.xcconfig */,
+				6ED697641F0623505383B1E1 /* Pods-ARKitEnvironmentMapper_Example.debug.xcconfig */,
+				0911C309EDF8F055D6D4127A /* Pods-ARKitEnvironmentMapper_Example.release.xcconfig */,
+				36F32A262A731A741A113E48 /* Pods-ARKitEnvironmentMapper_Tests.debug.xcconfig */,
+				596497773911C2E0ED9C8E65 /* Pods-ARKitEnvironmentMapper_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ARKitEnvironmentMapper_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -287,7 +287,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARKitEnvironmentMapper/ARKitEnvironmentMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -296,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A056066B8CC19B007F519A95 /* [CP] Check Pods Manifest.lock */ = {
@@ -310,7 +310,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ARKitEnvironmentMapper_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -329,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C3C290F8E6985AB75A4E600A /* [CP] Embed Pods Frameworks */ = {
@@ -338,7 +338,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARKitEnvironmentMapper/ARKitEnvironmentMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -347,7 +347,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3DB2A1C24DC2F5EBE62C9F1 /* [CP] Copy Pods Resources */ = {
@@ -362,7 +362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -516,7 +516,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FED7126537BF456C5AA88E25 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.debug.xcconfig */;
+			baseConfigurationReference = 6ED697641F0623505383B1E1 /* Pods-ARKitEnvironmentMapper_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 85W4RE848V;
@@ -533,7 +533,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32D4C353F21130F0BA6C16D0 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Example.release.xcconfig */;
+			baseConfigurationReference = 0911C309EDF8F055D6D4127A /* Pods-ARKitEnvironmentMapper_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 85W4RE848V;
@@ -550,7 +550,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BB7896EF3325B2F78B0C153 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.debug.xcconfig */;
+			baseConfigurationReference = 36F32A262A731A741A113E48 /* Pods-ARKitEnvironmentMapper_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -572,7 +572,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7A918F1621124457C9E5FE8 /* Pods-ARKitEnvironmentMapper-ARKitEnvironmentMapper_Tests.release.xcconfig */;
+			baseConfigurationReference = 596497773911C2E0ED9C8E65 /* Pods-ARKitEnvironmentMapper_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

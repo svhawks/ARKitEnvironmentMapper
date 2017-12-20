@@ -1,14 +1,11 @@
 platform :ios, '11.0'
 
-abstract_target 'ARKitEnvironmentMapper' do
+target 'ARKitEnvironmentMapper_Example' do
   use_frameworks!
+  pod 'ARKitEnvironmentMapper', :path => '../'
+end
 
-  target 'ARKitEnvironmentMapper_Example' do
-    pod 'ARKitEnvironmentMapper', :path => '../'
-  end
-
-  target 'ARKitEnvironmentMapper_Tests' do
-    pod 'ARKitEnvironmentMapper', :path => '../'
-  end
-
+target 'ARKitEnvironmentMapper_Tests' do
+  use_frameworks!
+  pod 'ARKitEnvironmentMapper', :path => '../'
 end
