@@ -56,7 +56,7 @@ __Note:__ The ideal way to set this should be to use `.mtlTexture` as input to b
 
 
 ## Author
-| [<img src="https://avatars0.githubusercontent.com/u/4161376?s=460&v=4" width="100px;"/>](http://halil.kayim.me)   | [Halil Ibrahim Kayim](http://halil.kayim.me)<br/><br/><sub>Software Engineer @ [MojiLaLa](http://mojilala.com)</sub><br/> [![Twitter][1.1]][1] [![Github][3.1]][3] [![LinkedIn][4.1]][4]|
+| [<img src="https://avatars0.githubusercontent.com/u/4161376?s=460&v=4" width="100px;"/>](http://halil.kayim.me)   | [Halil Ibrahim Kayim](http://halil.kayim.me)<br/><br/><sub>Software Engineer @ [Surreal](http://surrealmarket.com)</sub><br/> [![Twitter][1.1]][1] [![Github][3.1]][3] [![LinkedIn][4.1]][4]|
 | - | :- |
 
 [1.1]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
