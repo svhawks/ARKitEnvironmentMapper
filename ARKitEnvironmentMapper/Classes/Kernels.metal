@@ -24,17 +24,16 @@ kernel void updateEnvironmentMap(texture2d<float, access::read> currentFrameText
                                  device FrameInfo &frame [[buffer(0)]],
                                  uint2 gid [[thread_position_in_grid]])
 {
-  const float3 r0 = {0.0f, 0.0f, 0.0f};
   // get .zyx because of the BGRA -> RGBA conversion from MTLTexture to texture2d
   const float3 rd = (coordinateConversionTexture.read(gid).zyx * 2.0f) - 1.0f;
   const float3 n = frame.forward.xyz;
   const float D = -1 * (dot(n, frame.p3.xyz));
 
-  const float t = -(dot(n, r0) + D) / (dot(n, rd));
+  const float t = -D / (dot(n, rd));
   // check if ray intersects with the frame plane
   if (t > 0) {
     // get the intersection point
-    const float3 projection = r0 + t * rd;
+    const float3 projection = t * rd;
 
     const float3 p = projection - frame.p3.xyz;
 

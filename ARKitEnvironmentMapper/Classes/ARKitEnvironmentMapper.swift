@@ -232,7 +232,7 @@ public class ARKitEnvironmentMapper {
    - parameter cgImage: `CGImage` to set as the base environment map.
    - parameter color: `UIColor` to fill the base environment map with.
    */
-  public func reset(withDefaultEnvironmentMapImage cgImage: CGImage? = nil,
+  private func reset(withDefaultEnvironmentMapImage cgImage: CGImage? = nil,
                     orWithDefaultTextureColor color: UIColor? = nil) {
     lastUpdateTime = CACurrentMediaTime()
     setupEnvironmentMapTexture(withDefaultEnvironmentMapImage: cgImage,

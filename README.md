@@ -20,11 +20,13 @@ pod 'ARKitEnvironmentMapper'
 
 ## Usage
 
-To initialize with a base environment map with an image asset named "room", add use the following code:
+To initialize with a base environment map with an image asset named, for example, "room", use the following code:
 
 ```swift
 let environmentMapper = ARKitEnvironmentMapper(withImageName: "room")
 ```
+
+Note that the input image has to have a 2:1 aspect ratio.
 
 Alternatively, you can initialize it with a height and a color:
 
