@@ -1,9 +1,8 @@
 platform :ios, '11.0'
 
-target 'ARKitEnvironmentMapper' do
+target 'ARKitEnvironmentMapper_Example' do
   use_frameworks!
 
   # Pods for ARKitEnvironmentMapper
   pod 'ARKitEnvironmentMapper', :path => '../'
 end
-
