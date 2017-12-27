@@ -18,10 +18,11 @@ public class ARKitEnvironmentMapper {
   private var coordinateConversionTexture: MTLTexture!
   private var environmentMapTexture: MTLTexture!
 
-  private let updatesPerSecond = 10
   private var lastUpdateTime: CFTimeInterval = 0
 
   private(set) public var isMapping: Bool
+
+  private let options: Options
 
   /**
    Returns an `ARKitEnvironmentMapper` object with the image whose name is `imageName` as the base environment map.
@@ -29,14 +30,17 @@ public class ARKitEnvironmentMapper {
    Mapping is inactive by default, so `startMapping()` needs to be called to start mapping the camera feed to the environment map. It is advised to call it after a couple of seconds after the `ARSession` starts to avoid any wrong mappings during the initialization of the app.
 
    - parameter imageName: The name of the image to be set as the base environment map. The image must have an aspect ratio of 2:1 and is advised to have multitudes of 32 as dimensions.
+   - parameter options: Options to configure the behavior of the mapper.
    - returns: The `ARKitEnvironmentMapper` object with a base environment map, or `nil` if there is no such image with the name `imageName` or the image does not conform to a 2:1 aspect ratio or the device does not support the Metal framework.
    */
-  public init?(withImageName imageName: String) {
+  public init?(withImageName imageName: String, withOptions options: Options = .`default`) {
     let im = UIImage(named: imageName, in: Bundle.main, compatibleWith: nil)
     guard let image = im else {
       print("Can not find image with name: \(imageName)")
       return nil
     }
+
+    self.options = options
 
     height = Int(image.size.height)
     width = Int(image.size.width)
@@ -65,9 +69,12 @@ public class ARKitEnvironmentMapper {
 
    - parameter height: The height of the base environment map. The width will be `2 * height` as the environment map needs to have a 2:1 aspect ratio. It is advised to provide a multitude of 32 as the height.
    - parameter color: The color to fill the base environment map with.
+   - parameter options: Options to configure the behavior of the mapper.
    - returns: The `ARKitEnvironmentMapper` object with a base environment map, or `nil` if the device does not support the Metal framework.
    */
-  public init?(withMapHeight height: Int, withDefaultColor color: UIColor) {
+  public init?(withMapHeight height: Int, withDefaultColor color: UIColor, withOptions options: Options = .`default`) {
+    self.options = options
+
     self.height = height
     self.width = height * 2
 
@@ -96,7 +103,7 @@ public class ARKitEnvironmentMapper {
 
   private func shouldUpdate() -> Bool {
     let currentTime = CACurrentMediaTime()
-    return isMapping && currentTime - lastUpdateTime > (1.0 / Double(updatesPerSecond))
+    return isMapping && currentTime - lastUpdateTime > (1.0 / Double(options.updatesPerSecond))
   }
 
   private func setupCoordinateConversionTexture() {
@@ -177,7 +184,7 @@ public class ARKitEnvironmentMapper {
       return rotatedForward.rotate(around: rotatedLeft, by: rotY)
     }
 
-    if let currentLightIntensity = frame.lightEstimate?.ambientIntensity {
+    if options.experimentalExposureCorrectionEnabled, let currentLightIntensity = frame.lightEstimate?.ambientIntensity {
       ImageConverter.correctIntensity(of: frame.capturedImage, with: currentLightIntensity)
     }
     guard let currentFrameTexture = metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
