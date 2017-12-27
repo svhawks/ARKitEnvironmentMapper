@@ -3,7 +3,7 @@ import QuartzCore
 import MetalKit
 import ARKit
 
-class MetalManager {
+class MetalMemoryManager {
   private let device: MTLDevice
   private let commandQueue: MTLCommandQueue
   private let defaultLibrary: MTLLibrary
@@ -22,7 +22,7 @@ class MetalManager {
     if
       let d = MTLCreateSystemDefaultDevice(),
       let queue = d.makeCommandQueue(),
-      let library = try? d.makeDefaultLibrary(bundle: Bundle(for: MetalManager.self)),
+      let library = try? d.makeDefaultLibrary(bundle: Bundle(for: MetalMemoryManager.self)),
       let function = library.makeFunction(name: "updateEnvironmentMap"),
       let state = try? d.makeComputePipelineState(function: function)
     {
@@ -40,7 +40,7 @@ class MetalManager {
   }
 
   func newReadableTexture(fromCVPixelBuffer pixelBuffer: CVPixelBuffer) -> MTLTexture? {
-    let cgImage = convertToCGImage(from: pixelBuffer)
+    let cgImage = ImageConverter.convertToCGImage(from: pixelBuffer)
     if let image = cgImage {
       return try? textureLoader.newTexture(cgImage: image, options: nil)
     } else {
@@ -107,27 +107,6 @@ class MetalManager {
 
     commandBuffer.commit()
     commandBuffer.waitUntilCompleted()
-  }
-
-  private func convertToCGImage(from pixelBuffer: CVPixelBuffer) -> CGImage? {
-    let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-    let cgImage = ciContext.createCGImage(ciImage, from: CGRect(x: 0,
-                                                                y: 0,
-                                                                width: CVPixelBufferGetWidth(pixelBuffer),
-                                                                height: CVPixelBufferGetHeight(pixelBuffer)))
-    return cgImage
-  }
-
-  func image(fromTexture texture: MTLTexture) -> CGImage? {
-    guard texture.pixelFormat == .bgra8Unorm_srgb else {
-      return nil
-    }
-
-    guard let ciImage = CIImage(mtlTexture: texture, options: nil) else {
-        return nil
-    }
-    let correctedImage = ciImage.transformed(by: CGAffineTransform(scaleX: 1, y: -1))
-    return ciContext.createCGImage(correctedImage, from: correctedImage.extent)
   }
 
 }

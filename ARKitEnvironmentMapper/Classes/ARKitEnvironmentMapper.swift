@@ -11,7 +11,7 @@ public class ARKitEnvironmentMapper {
   private var xFov: Float!
   private var yFov: Float!
 
-  private let metalManager: MetalManager
+  private let metalManager: MetalMemoryManager
 
   private var currentFrameInfo: FrameInfo?
 
@@ -46,7 +46,7 @@ public class ARKitEnvironmentMapper {
       return nil
     }
 
-    guard let mtlManager = MetalManager(withMapHeight: height) else {
+    guard let mtlManager = MetalMemoryManager(withMapHeight: height) else {
       return nil
     }
 
@@ -71,7 +71,7 @@ public class ARKitEnvironmentMapper {
     self.height = height
     self.width = height * 2
 
-    guard let mtlManager = MetalManager(withMapHeight: height) else {
+    guard let mtlManager = MetalMemoryManager(withMapHeight: height) else {
       return nil
     }
 
@@ -177,10 +177,12 @@ public class ARKitEnvironmentMapper {
       return rotatedForward.rotate(around: rotatedLeft, by: rotY)
     }
 
+    if let currentLightIntensity = frame.lightEstimate?.ambientIntensity {
+      ImageConverter.correctIntensity(of: frame.capturedImage, with: currentLightIntensity)
+    }
     guard let currentFrameTexture = metalManager.newReadableTexture(fromCVPixelBuffer: frame.capturedImage) else {
       return
     }
-
     currentFrameInfo = FrameInfo(frustum, cameraForward, Float(currentFrameTexture.width), Float(currentFrameTexture.height))
 
     metalManager.updateEnvironmentMapTask(currentFrame: currentFrameTexture,
@@ -201,9 +203,9 @@ public class ARKitEnvironmentMapper {
     case .mtlTexture:
       return environmentMapTexture
     case .cgImage:
-      return metalManager.image(fromTexture: environmentMapTexture)
+      return ImageConverter.convertToCGImage(from: environmentMapTexture)
     case .uiImage:
-      if let cgImage = metalManager.image(fromTexture: environmentMapTexture) {
+      if let cgImage = ImageConverter.convertToCGImage(from: environmentMapTexture) {
         return UIImage(cgImage: cgImage)
       } else {
         return nil
@@ -238,6 +240,7 @@ public class ARKitEnvironmentMapper {
     setupEnvironmentMapTexture(withDefaultEnvironmentMapImage: cgImage,
                                orWithDefaultTextureColor: color)
   }
+
 }
 
 public enum EnvironmentMapType {
