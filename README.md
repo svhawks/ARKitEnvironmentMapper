@@ -46,7 +46,7 @@ func session(_ session: ARSession, didUpdate frame: ARFrame) {
 }
 ```
 
-You can call `updateMap(withFrame:)` in `didUpdate` regardless of the preferred FPS, as the frequency of this method is limited to at most 10 by default. The frequency will be customizable in a future release.
+You can call `updateMap(withFrame:)` in `didUpdate` regardless of the preferred FPS, as it is not executed every frame. Its frequency is bound by the value `ARKitEnvironmentMapper.Options.updatesPerSecond` and the default value is 10 updates per second.
 
 After mapping the environment for a while you can get the current generated environment map and set it as the environment map of your `ARSCNView` with the following code:
 
