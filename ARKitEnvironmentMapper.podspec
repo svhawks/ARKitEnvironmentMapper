@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ARKitEnvironmentMapper'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'Real-time environment map generator for ARKit'
   s.description      = <<-DESC
  A library that allows you to generate and update environment maps in real-time using the camera feed and ARKit's tracking capabilities.
