@@ -17,4 +17,6 @@ Pod::Spec.new do |s|
   s.source_files = 'ARKitEnvironmentMapper/Classes/**/*'
 
   s.frameworks = 'Metal', 'MetalKit', 'ARKit', 'SceneKit', 'CoreGraphics', 'QuartzCore'
+
+  s.dependency 'Vivid'
 end

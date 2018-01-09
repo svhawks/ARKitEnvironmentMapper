@@ -285,10 +285,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Example/Pods-ARKitEnvironmentMapper_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARKitEnvironmentMapper/ARKitEnvironmentMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Vivid/Vivid.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARKitEnvironmentMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Vivid.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -336,10 +338,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitEnvironmentMapper_Tests/Pods-ARKitEnvironmentMapper_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARKitEnvironmentMapper/ARKitEnvironmentMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Vivid/Vivid.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARKitEnvironmentMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Vivid.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

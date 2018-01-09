@@ -1,5 +1,7 @@
 PODS:
-  - ARKitEnvironmentMapper (0.1.0)
+  - ARKitEnvironmentMapper (0.3.0):
+    - Vivid
+  - Vivid (0.9)
 
 DEPENDENCIES:
   - ARKitEnvironmentMapper (from `../`)
@@ -9,7 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ARKitEnvironmentMapper: b6f52a0b43f1f48d70464dff530b881134320bd5
+  ARKitEnvironmentMapper: 09d668f152dec672b11a5aa1c7a357d60abbbd22
+  Vivid: 0fde7409beac71224deb151dd78f98a5bb860497
 
 PODFILE CHECKSUM: dcb4c95a72ab1b5c809cc4e9533e83dc4071dc6b
 
