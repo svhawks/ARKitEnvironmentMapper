@@ -56,6 +56,15 @@ sceneView.scene.lightingEnvironment.contents = environmentMapper.currentEnvironm
 
 __Note:__ The ideal way to set this should be to use `.mtlTexture` as input to bypass any image conversion and memory operation overhead. However, due to an Apple bug, setting a `MTLTexture` as the environment map currently has no effect. If you think this is not an Apple bug and you do have a solution, please don't hesitate to send a pull request.
 
+## Output
+
+Below is a sample output `ARKitEnvironmentMapper` generates when initialized with a base environment map:
+
+<img src="https://i.imgur.com/TBJzze1.jpg" width="384"> => <img src="https://i.imgur.com/hr4zPSQ.png" width="384">
+
+Here is another sample output when initialized with a white background in the same environment:
+
+<img src="https://i.imgur.com/2rtHYaM.png" width="384">
 
 ## Author
 | [<img src="https://avatars0.githubusercontent.com/u/4161376?s=460&v=4" width="100px;"/>](http://halil.kayim.me)   | [Halil Ibrahim Kayim](http://halil.kayim.me)<br/><br/><sub>Software Engineer @ [Surreal](http://surrealmarket.com)</sub><br/> [![Twitter][1.1]][1] [![Github][3.1]][3] [![LinkedIn][4.1]][4]|
